@@ -1,0 +1,17 @@
+import wollok.game.*
+import jugador.*
+program iniciar {
+	
+	
+	
+	game.width(25)
+	game.height(15)
+	game.boardGround("fondo.png")
+	game.cellSize(50)
+	game.addVisual(jugador)
+	
+	game.start()
+
+}
+
+
