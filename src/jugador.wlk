@@ -50,28 +50,49 @@ object tiempo{
 
 }*/
 
-
+object suelo{
+	var property position = game.origin().up(1)
+}
 
 object jugador {
 	var property position = game.at(24,1)
+	var property image = "jugador.png"
 	
-	method image()= "jugador.png"
+	/*method image(unaImagen){ image = unaImagen}
+	method image()= image*/
 	
-	method siguienteEscalon(){
+	method siguienteEscalon(){ //SUBE AL SIGUIENTE ESCALON SOLO POR LAS ESCALERAS
 		if (position == game.at(0,1) or position == game.at(24,5)){
 		position = position.up(4)}
 	}
 	
-	/*method saltar(){
+	method saltar(){ //SALTA EN DIAGONAL (EL SALTO DURA 1 SEGUNDO, CUALQ COSA LO MODIFICAMOS Y LE AGREGAMOS MAS DURACION)
+		if (position.y() == suelo.position().y()){
+		self.subir()}
+		if(image == "jugador.png"){
+			position =position.left(1)	
+		}else{
+			position = position.right(1)
+		}
+		
+		game.schedule(1000, {self.bajar()})		
+	}
+	
+	method bajar(){
+		if (position.y() != suelo.position().y()){
+		position = position.down(2)}
+	}
+	method subir(){
 		position = position.up(2)
-	}*/
+	}
 	
 	method moverALaIzquierda(){
-		
+		self.image("jugador.png")
 		position = position.left(1)
 	}
 	
 	method moverALaDerecha(){
+		self.image("jugador_mirando_derecha.png")
 		position = position.right(1)
 	}
 		
