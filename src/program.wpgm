@@ -1,15 +1,11 @@
 import wollok.game.*
 import jugador.*
-program iniciar {
+import image.*
+program messias {
 	
-	
-	
-	game.width(25)
-	game.height(15)
-	game.boardGround("fondo.png")
-	game.cellSize(50)
-	game.addVisual(jugador)
-	
+	configuracion.iniciar()
+	reloj.iniciar()
+	teclado.comandosTeclado()
 	game.start()
 
 }
